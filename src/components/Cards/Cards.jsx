@@ -7,8 +7,8 @@ import cx from 'classnames'
 import styles from './Cards.module.css';
 
 // we need to destructure twice to extract the props out of our data
-const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
-  console.log(confirmed);
+const Cards = ({ data }) => {
+  const {confirmed, recovered, deaths, lastUpdate} = data
 
   if (!confirmed) {
     return 'Loading...';
