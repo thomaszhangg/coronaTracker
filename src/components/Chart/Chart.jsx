@@ -5,7 +5,7 @@ import { Line, Bar } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 
 // don't forget [] as second paramter for useEffect to act like componentDidMount (fetch only once)
-const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
+const Chart = ({ data, country }) => {
   // declare the state field and immediately setState
   // we only have dailyData for global data
   // we will use the data passed down as props for our country bar chart
@@ -18,29 +18,6 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
 
     fetchAPI();
   }, []);
-
-  const barChart = confirmed ? (
-    <Bar
-      data={{
-        labels: ['Infected', 'Recovered', 'Deaths'],
-        datasets: [
-          {
-            label: 'People',
-            backgroundColor: [
-              'rgba(0, 0, 255, 0.5)',
-              'rgba(0, 255, 0, 0.5)',
-              'rgba(255, 0, 0, 0.5)',
-            ],
-            data: [confirmed.value, recovered.value, deaths.value],
-          },
-        ],
-      }}
-      options={{
-        legend: { display: false },
-        title: { display: true, text: `Current state in ${country}` },
-      }}
-    />
-  ) : null;
 
   const lineChart = dailyData[0] ? (
     <Line
@@ -61,6 +38,33 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
             fill: true,
           },
         ],
+      }}
+    />
+  ) : null;
+
+  const barChart = data.confirmed ? (
+    <Bar
+      data={{
+        labels: ['Infected', 'Recovered', 'Deaths'],
+        datasets: [
+          {
+            label: 'People',
+            backgroundColor: [
+              'rgba(0, 0, 255, 0.5)',
+              'rgba(0, 255, 0, 0.5)',
+              'rgba(255, 0, 0, 0.5)',
+            ],
+            data: [
+              data.confirmed.value,
+              data.recovered.value,
+              data.deaths.value,
+            ],
+          },
+        ],
+      }}
+      options={{
+        legend: { display: false },
+        title: { display: true, text: `Current state in ${country}` },
       }}
     />
   ) : null;
