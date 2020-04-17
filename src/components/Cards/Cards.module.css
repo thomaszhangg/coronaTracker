@@ -1,0 +1,20 @@
+.container {
+  margin: 50px 0;
+}
+
+/* !important needed sometimes for material UI since it's not inline */
+.card {
+  margin: 0 2% !important;
+}
+
+.infected {
+  border-bottom: 10px solid rgba(242, 226, 56, 0.5);
+}
+
+.recovered {
+  border-bottom: 10px solid rgba(0, 255, 0, 0.5);
+}
+
+.deaths {
+  border-bottom: 10px solid rgba(255, 0, 0, 0.5);
+}
