@@ -2,7 +2,7 @@
 
 This application was built with React, Chart.JS and Material UI. All data comes from https://covid19.mathdro.id/api.
 
-<img src="images/coronatrackr_demo.gif">
+<img src="./src/images/coronatrackr_demo.gif">
 
 ### Setup
 
