@@ -14,6 +14,12 @@ body {
   margin-top: 10px;
 }
 
+.hyperlink {
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
+  color: teal
+}
+
 @media (max-width: 770px) {
   .container {
     margin: 0 10%;

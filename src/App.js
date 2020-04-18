@@ -4,38 +4,43 @@ import React, { Component } from 'react';
 import { Cards, Chart, CountryPicker } from './components';
 import styles from './App.module.css';
 // just saying ./api will automatically look for index file
-import {fetchData} from './api'
+import { fetchData } from './api';
 
-import coronaImage from './images/coronaImage.png'
+import coronaImage from './images/coronaImage.png';
 
 class App extends Component {
-    state = {
-        data: {},
-        country: ''
-    }
+  state = {
+    data: {},
+    country: '',
+  };
 
-    async componentDidMount() {
-        const fetchedData = await fetchData()
+  async componentDidMount() {
+    const fetchedData = await fetchData();
 
-        this.setState({data: fetchedData})
-    }
+    this.setState({ data: fetchedData });
+  }
 
-    handleCountryChange = async (country) => {
-      // fetch the data then set the state
-      const fetchedData = await fetchData(country)
+  handleCountryChange = async (country) => {
+    // fetch the data then set the state
+    const fetchedData = await fetchData(country);
 
-      this.setState({ data: fetchedData, country: country})
-    }
+    this.setState({ data: fetchedData, country: country });
+  };
 
   render() {
-      const {data, country} = this.state
+    const { data, country } = this.state;
 
     return (
       <div className={styles.container}>
         <img className={styles.image} alt="COVID-19" src={coronaImage} />
-        <Cards data={data}/>
-        <CountryPicker handleCountryChange={this.handleCountryChange}/>
-        <Chart data={data} country={country}/>
+
+        <a className={styles.hyperlink} href="http://github.com/thomaszhangg">
+          Thomas Zhang <i class="fa fa-github" aria-hidden="true"></i>
+        </a>
+
+        <Cards data={data} />
+        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <Chart data={data} country={country} />
       </div>
     );
   }
